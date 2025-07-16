@@ -5,6 +5,6 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
-        Console.WriteLine("Welcome to T-1050");
+        Console.WriteLine("Welcome to T-1050 2");
     }
 }
