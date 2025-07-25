@@ -1,157 +1,113 @@
 using System;
-using System.Linq;
 
-namespace MyApplication
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        Console.WriteLine("Problem 1");
+        for (int i = 1; i <= 10; i++)
         {
-            Console.WriteLine("Problem 1: Simple For Loop (1 to 10)");
-            Problem1_SimpleForLoop();
-
-            Console.WriteLine("Problem 2: Even Numbers (1 to 20)");
-            Problem2_EvenNumbers();
-
-            Console.WriteLine("Problem 3: While Loop Countdown");
-            Problem3_WhileLoopCountdown();
-
-            Console.WriteLine("Problem 4: Multiples of 10 (10 to 1000)");
-            Problem4_WhileLoopMultiplesOf10();
-
-            Console.WriteLine("Problem 5: Seasons of the Year");
-            Problem5_SeasonsOfTheYear();
-
-            Console.WriteLine("Problem 6: Days of the Week (1-7)");
-            Problem6_DaysOfTheWeek();
-
-            Console.WriteLine("Problem 7: Favorite Books and Authors");
-            Problem7_FavoriteBooksAndAuthors();
-
-            Console.WriteLine("Problem 8: Temperature Tracker");
-            Problem8_TemperatureTracker();
-
-            Console.WriteLine("Problem 9: Reverse Countdown");
-            Problem9_ReverseCountdown();
-
-            Console.WriteLine("\nPress any key to exit.");
-            Console.ReadKey();
+            Console.WriteLine(i);
         }
+        Console.WriteLine();
 
-        static void Problem1_SimpleForLoop()
+        Console.WriteLine("Problem 2");
+        for (int i = 1; i <= 20; i++)
         {
-            for (int i = 1; i <= 10; i++)
+            if (i % 2 == 0)
             {
                 Console.WriteLine(i);
             }
         }
+        Console.WriteLine();
 
-        static void Problem2_EvenNumbers()
+        Console.WriteLine("Problem 3");
+        int j = 5;
+        while (j >= 1)
         {
-            for (int i = 1; i <= 20; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    Console.WriteLine(i);
-                }
-            }
+            Console.WriteLine(j);
+            j--;
         }
+        Console.WriteLine();
 
-        static void Problem3_WhileLoopCountdown()
+        Console.WriteLine("Problem 4");
+        int k = 10;
+        while (k <= 1000)
         {
-            int count = 5;
-            while (count >= 1)
-            {
-                Console.WriteLine(count);
-                count--;
-            }
+            Console.WriteLine(k);
+            k += 10;
         }
+        Console.WriteLine();
 
-        static void Problem4_WhileLoopMultiplesOf10()
+        Console.WriteLine("Problem 5");
+        string[] seasons = { "Spring", "Summer", "Fall", "Winter" };
+
+        foreach (string season in seasons)
         {
-            int num = 10;
-            while (num <= 1000)
-            {
-                Console.WriteLine(num);
-                num += 10;
-            }
+            Console.WriteLine(season);
         }
+        Console.WriteLine();
 
-        static void Problem5_SeasonsOfTheYear()
+        Console.WriteLine("Problem 6");
+        string[] days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+
+        Console.Write("Please enter a number from 1 to 7 to get the corresponding day: ");
+        string dayNumberInput = Console.ReadLine()!;
+
+        int dayIndex;
+
+        if (int.TryParse(dayNumberInput, out dayIndex))
         {
-            string[] seasons = { "Spring", "Summer", "Fall", "Winter" };
-
-            foreach (string season in seasons)
+            if (dayIndex >= 1 && dayIndex <= 7)
             {
-                Console.WriteLine(season);
-            }
-        }
-
-        static void Problem6_DaysOfTheWeek()
-        {
-            string[] days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-
-            Console.Write("Enter a number from 1 to 7 to see the corresponding day: ");
-            string? input = Console.ReadLine();
-
-            if (int.TryParse(input, out int dayNumber))
-            {
-                if (dayNumber >= 1 && dayNumber <= 7)
-                {
-                    Console.WriteLine($"Day {dayNumber} : {days[dayNumber - 1]}");
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input: Please enter a number between 1 and 7.");
-                }
+                Console.WriteLine($"Day {dayIndex} is: {days[dayIndex - 1]}");
             }
             else
             {
-                Console.WriteLine("Invalid input: Please enter a valid number.");
+                Console.WriteLine("Invalid day number! Please enter a number between 1 and 7.");
             }
         }
-
-        static void Problem7_FavoriteBooksAndAuthors()
+        else
         {
-            string[] bookTitles = { "The Hitchhiker's Guide to the Galaxy", "1984", "Pride and Prejudice" };
-            string[] authors = { "Douglas Adams", "George Orwell", "Jane Austen" };
-
-            for (int i = 0; i < bookTitles.Length; i++)
-            {
-                Console.WriteLine($"{bookTitles[i]} by {authors[i]}");
-            }
+            Console.WriteLine("Invalid input! Please enter a numeric value between 1 and 7.");
         }
+        Console.WriteLine();
 
-        static void Problem8_TemperatureTracker()
+        Console.WriteLine("Problem 7");
+        string[] bookTitles = { "Elephant", "Marrakech", "Khan-al-khalili" };
+        string[] authors = { "George Orwell", "George Orwell", "Najib Mahfoud" };
+
+        for (int i = 0; i < bookTitles.Length; i++)
         {
-            int[] temperatures = { 25, 18, 30, 22, 15 };
-
-            Console.WriteLine("Original temperatures: " + string.Join(", ", temperatures));
-
-            Array.Sort(temperatures);
-            Console.WriteLine("Temperatures in ascending order: " + string.Join(", ", temperatures));
-
-            int lowestTemp = temperatures[0];
-            Console.WriteLine($"Lowest temperature: {lowestTemp}°C");
-
-            int highestTemp = temperatures[temperatures.Length - 1];
-            Console.WriteLine($"Highest temperature: {highestTemp}°C");
+            Console.WriteLine($"{bookTitles[i]} by {authors[i]}");
         }
+        Console.WriteLine();
 
-        static void Problem9_ReverseCountdown()
+        Console.WriteLine("Problem 8");
+        int[] temperatures = { 25, 18, 30, 22, 15 };
+        Console.WriteLine("Original temperatures: " + string.Join(", ", temperatures));
+
+        Array.Sort(temperatures);
+        Console.WriteLine("Temperatures sorted in ascending order: " + string.Join(", ", temperatures));
+
+        int lowestTemperature = temperatures[0];
+        int highestTemperature = temperatures[temperatures.Length - 1];
+
+        Console.WriteLine($"Lowest temperature: {lowestTemperature}°C");
+        Console.WriteLine($"Highest temperature: {highestTemperature}°C");
+        Console.WriteLine();
+
+        Console.WriteLine("Problem 9");
+        int[] originalArray = { 5, 4, 3, 2, 1 };
+        Console.WriteLine("Original array order: " + string.Join(", ", originalArray));
+
+        Array.Reverse(originalArray);
+        Console.WriteLine("Array after Array.Reverse(): " + string.Join(", ", originalArray));
+
+        Console.WriteLine("Displaying reversed array with a for loop:");
+        for (int i = 0; i < originalArray.Length; i++)
         {
-            int[] numbers = { 5, 4, 3, 2, 1 };
-
-            Console.WriteLine("Original array: " + string.Join(", ", numbers));
-
-            Array.Reverse(numbers);
-            Console.WriteLine("Array after reversal: " + string.Join(", ", numbers));
-
-            Console.WriteLine("Displaying new order:");
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                Console.WriteLine(numbers[i]);
-            }
+            Console.WriteLine($"Element at index {i}: {originalArray[i]}");
         }
     }
 }
